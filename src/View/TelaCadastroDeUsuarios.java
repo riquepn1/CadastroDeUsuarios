@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JTextField;
 
 public class TelaCadastroDeUsuarios extends JFrame {
 
@@ -31,6 +32,8 @@ public class TelaCadastroDeUsuarios extends JFrame {
 	private JLabel lblBanner;
 	private JLabel lblBannerImage;
 	private JButton btnCarregarImagemBanner;
+	private JLabel lblNomeTXT;
+	private JTextField textField;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,11 +50,11 @@ public class TelaCadastroDeUsuarios extends JFrame {
 
 	public TelaCadastroDeUsuarios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 310);
+		setBounds(100, 100, 548, 378);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][][][][][][]", "[][]"));
+		contentPane.setLayout(new MigLayout("", "[][grow][][][][][]", "[][][]"));
 		
 		JLabel lblFotoDePerfilTXt = new JLabel("Foto de Perfil(Opcional): ");
 		contentPane.add(lblFotoDePerfilTXt, "cell 0 0");
@@ -99,6 +102,13 @@ public class TelaCadastroDeUsuarios extends JFrame {
 		
 		btnCarregarImagemBanner = new JButton("Carregar Imagem");
 		contentPane.add(btnCarregarImagemBanner, "cell 2 1,alignx center");
+		
+		lblNomeTXT = new JLabel("Nome:");
+		contentPane.add(lblNomeTXT, "cell 0 2");
+		
+		textField = new JTextField();
+		contentPane.add(textField, "cell 1 2 6 1,growx");
+		textField.setColumns(10);
 		btnCarregarImagemBanner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser seletor = new JFileChooser();
@@ -123,5 +133,7 @@ public class TelaCadastroDeUsuarios extends JFrame {
 				}
 			}
 		});
+		
+		
 	}
 }
